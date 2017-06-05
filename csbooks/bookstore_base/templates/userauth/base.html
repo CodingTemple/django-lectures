@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li class="navbar-brand"><a href="#">BRAND</a></li>
+          <li><a href="{% url 'admin:index' %}" class="navbar-link">Admin</a></li>
+          <li><a href="#" class="navbar-link">Other</a></li>
+          <li><a href="{% url 'userauth:register' %}" class="navbar-link">Register</a></li>
+
+            {% if user.is_authenticated %}
+            <li><a class="navbar-link" href="#">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'userauth:user_login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block body_block %}
+
+      {% endblock %}
+    </div>
+  </body>
+</html>

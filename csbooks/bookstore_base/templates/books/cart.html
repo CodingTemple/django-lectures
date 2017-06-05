@@ -1,0 +1,29 @@
+{% extends 'books/base.html' %}
+
+{% block body_block %}
+  {% load staticfiles %}
+  <h1>I am the cart</h1>
+    <div>
+        {% for item in cart %}
+        <span>{{ item.product.name }}</span>
+        <span>{{ item.quantity }}</span>
+        Quantity: <a href="{% url 'add_to_cart' item.product.ISBN %}">[+]</a>
+        Remove: <a href="remove">[-]</a>
+    </div>
+    {% empty %}
+        <div>
+            There are no items here
+        </div>
+    {% endfor %}
+<div>
+    <h4>Total: $<span>{{ total }}</span></h4>
+</div>
+
+<div>
+    {% if cart %}
+    <div>
+        <a href="/checkout" class="btn btn-primary">Checkout</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

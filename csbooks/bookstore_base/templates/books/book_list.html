@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "books/base.html"%}
+  {% block body_block %}
+    <div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>ISBN</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for books in book_list %}
+      <tr>
+        <td>books.author</td>
+        <td>books.title</td>
+        <td>books.ISBN</td>
+      </tr>
+    </tbody>
+    <a href="{% url 'add_to_cart' books.ISBN %}">[Add to Cart]</a>
+
+    {% endfor %}
+  </table>
+</div>
+
+  {% endblock %}

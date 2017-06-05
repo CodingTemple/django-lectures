@@ -1,0 +1,29 @@
+{% extends 'books/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<form id="checkout-form" action="/postcheckout" method="post">
+    <div id="error-message"></div>
+    <div>
+        <label for="card-number">Card Number</label>
+        <div class="hosted-field" id="card-number"></div>
+    </div>
+    <div>
+        <label for="cvv">CVV</label>
+        <div class="hosted-field" id="cvv"></div>
+    </div>
+    <div>
+        <label for="expiration-date">Expiration Date</label>
+        <div class="hosted-field" id="expiration-date"></div>
+    </div>
+    <input type="hidden" name="payment_method_nonce">
+    <input type="submit" value="Pay $10" disabled class="btn btn-primary">
+</form>
+{% endblock %}
+{% block scripts%}
+
+{% block checkout_script %}
+<script src="https://js.braintreegateway.com/web/3.12.0/js/client.min.js"></script>
+<script src="https://js.braintreegateway.com/web/3.12.0/js/hosted-fields.min.js"></script>
+<script src= "{% static 'checkout.js'%}"></script>
+{% endblock %}
+{% endblock%}
