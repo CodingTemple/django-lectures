@@ -28,9 +28,9 @@ class indexView(TemplateView):
     template_name = 'books/index.html'
 
 braintree.Configuration.configure(braintree.Environment.Sandbox,
-                                merchant_id="34hkzh8p357qypjk",
-                                public_key="r6k25wjjgrs85k5k",
-                                private_key = "3e8a367a637ec65a728e2c17e582e6bb")
+                                merchant_id="MERCHANT_ID",
+                                public_key="PUBLIC_KEY",
+                                private_key = "PRIVATE_KEY")
 
 def checkout(request):
     return render(request,'books/checkout.html')
